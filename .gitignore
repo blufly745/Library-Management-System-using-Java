@@ -1,1 +1,20 @@
+# Eclipse 配置文件
+.classpath
+.project
+.settings/
 
+# 编译输出目录（整个 build 文件夹都不要）
+build/
+bin/
+dist/
+
+# Java 编译产物
+*.class
+
+# 依赖包（如果已经放在 RequiredJARS 里，也可以忽略）
+*.jar
+*.war
+
+# 其他临时文件
+*.log
+*.tmp
