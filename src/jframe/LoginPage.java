@@ -51,7 +51,7 @@ public class LoginPage extends javax.swing.JFrame {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -83,7 +83,7 @@ public class LoginPage extends javax.swing.JFrame {
         String utype = txt_usertype.getSelectedItem().toString();
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
             pst = con.prepareStatement("select * from users where username=? and password=? and usertype=?");
             pst.setString(1, name);
             pst.setString(2, pwd);

@@ -99,7 +99,7 @@ public class ManageBooks extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
         } catch (SQLException ex) {
             Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -142,7 +142,7 @@ public class ManageBooks extends javax.swing.JFrame {
             String id = txt_bookid.getText();
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
             pst = con.prepareStatement("select * from book_details where book_id=?");
             pst.setString(1, id);
 
@@ -167,7 +167,7 @@ public class ManageBooks extends javax.swing.JFrame {
             String name = txt_bookname.getText();
 
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
             pst = con.prepareStatement("select * from book_details where book_name=?");
             pst.setString(1, name);
 
@@ -196,7 +196,7 @@ public class ManageBooks extends javax.swing.JFrame {
 
             rs = pst.executeQuery();
             while (rs.next()) {
-                barDataset.setValue(rs.getString("book_name"), new Double(rs.getDouble("issue_count")));
+                barDataset.setValue(rs.getString("book_name"), rs.getDouble("status_count"));
 
             }
 

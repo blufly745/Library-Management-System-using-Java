@@ -80,7 +80,7 @@ public class ReturnBook extends javax.swing.JFrame {
     public void Connect() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
         } catch (SQLException ex) {
             Logger.getLogger(ManageStudents.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -95,7 +95,7 @@ public class ReturnBook extends javax.swing.JFrame {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
             pst = con.prepareStatement("select * from issue_book_details where book_id=? and student_id=? and status=?");
             pst.setInt(1, bookId);
             pst.setInt(2, studentId);
@@ -138,7 +138,7 @@ public class ReturnBook extends javax.swing.JFrame {
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
             pst = con.prepareStatement("update issue_book_details set status=? where book_id=? and student_id=? and status=?");
             pst.setString(1, "returned");
             pst.setInt(2, bookId);
