@@ -48,14 +48,11 @@ public class LoginPage extends javax.swing.JFrame {
 
     // Database connectivity
     public void Connect() {
-
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
+            con = DBConnection.getConnection();
+        } catch (SQLException ex) {
+            Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
         }
-
     }
 
     // Validate Login credentials
@@ -82,8 +79,7 @@ public class LoginPage extends javax.swing.JFrame {
         String pwd = txt_password.getText();
         String utype = txt_usertype.getSelectedItem().toString();
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+        	con = DBConnection.getConnection();
             pst = con.prepareStatement("select * from users where username=? and password=? and usertype=?");
             pst.setString(1, name);
             pst.setString(2, pwd);
@@ -101,7 +97,7 @@ public class LoginPage extends javax.swing.JFrame {
 
             }
 
-        } catch (SQLException | ClassNotFoundException ex) {
+        } catch (SQLException ex) {
             Logger.getLogger(LoginPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 

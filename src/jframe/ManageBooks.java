@@ -98,15 +98,11 @@ public class ManageBooks extends javax.swing.JFrame {
     // Database connectivity
     public void Connect() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+            con = DBConnection.getConnection();
         } catch (SQLException ex) {
-            Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     // Load book details from the database table
     public void Book_Load() {
         int c;
@@ -141,8 +137,7 @@ public class ManageBooks extends javax.swing.JFrame {
         try {
             String id = txt_bookid.getText();
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+            con = DBConnection.getConnection();
             pst = con.prepareStatement("select * from book_details where book_id=?");
             pst.setString(1, id);
 
@@ -166,8 +161,7 @@ public class ManageBooks extends javax.swing.JFrame {
         try {
             String name = txt_bookname.getText();
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+            con = DBConnection.getConnection();
             pst = con.prepareStatement("select * from book_details where book_name=?");
             pst.setString(1, name);
 

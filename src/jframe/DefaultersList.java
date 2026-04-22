@@ -81,15 +81,11 @@ public class DefaultersList extends javax.swing.JFrame {
     // Database connectivity method
     public void Connect() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "");
+            con = DBConnection.getConnection();
         } catch (SQLException ex) {
-            Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
     // Loading issue book details from the database table
     public void Record_Load() {
         int c;

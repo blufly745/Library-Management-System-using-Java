@@ -71,9 +71,8 @@ public class SignUpPage extends javax.swing.JFrame {
     public void Connect() {
 
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
-        } catch (SQLException | ClassNotFoundException ex) {
+        	con = DBConnection.getConnection();
+        } catch (SQLException ex) {
             Logger.getLogger(SignUpPage.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -156,8 +155,7 @@ public class SignUpPage extends javax.swing.JFrame {
         try {
             String name = txt_username.getText();
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+            con = DBConnection.getConnection();
             pst = con.prepareStatement("select * from users where username=?");
             pst.setString(1, name);
             rs = pst.executeQuery();

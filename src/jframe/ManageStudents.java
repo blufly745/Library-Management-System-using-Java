@@ -101,13 +101,10 @@ public class ManageStudents extends javax.swing.JFrame {
     // Database connectivity
     public void Connect() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+        	con = DBConnection.getConnection();
         } catch (SQLException ex) {
             Logger.getLogger(ManageStudents.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(ManageStudents.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } 
     }
 
     // Load Student details from the database table
@@ -144,8 +141,7 @@ public class ManageStudents extends javax.swing.JFrame {
         try {
             String id = txt_studentid.getText();
 
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+            con = DBConnection.getConnection();
             pst = con.prepareStatement("select * from student_details where student_id=?");
             pst.setString(1, id);
 

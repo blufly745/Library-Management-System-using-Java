@@ -96,11 +96,8 @@ public class HomePage extends javax.swing.JFrame {
     // Database connectivity method
     public void Connect() {
         try {
-            Class.forName("com.mysql.cj.jdbc.Driver");
-            con = DriverManager.getConnection("jdbc:mysql://localhost/library_management_system", "root", "123456");
+            con = DBConnection.getConnection();
         } catch (SQLException ex) {
-            Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
             Logger.getLogger(ManageBooks.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
@@ -251,7 +248,7 @@ public class HomePage extends javax.swing.JFrame {
             pst = con.prepareStatement("select book_name, count(*) as issue_count from issue_book_details group by book_name");
             rs = pst.executeQuery();
             while (rs.next()) {
-                barDataset.setValue(rs.getString("book_name"), new Double(rs.getDouble("issue_count")));
+                barDataset.setValue(rs.getString("book_name"),rs.getDouble("issue_count"));
 
             }
 
