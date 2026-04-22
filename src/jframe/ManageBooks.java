@@ -137,7 +137,7 @@ public class ManageBooks extends javax.swing.JFrame {
         try {
             String id = txt_bookid.getText();
 
-            con = DBConnection.getConnection();
+            Connect();
             pst = con.prepareStatement("select * from book_details where book_id=?");
             pst.setString(1, id);
 
@@ -161,7 +161,7 @@ public class ManageBooks extends javax.swing.JFrame {
         try {
             String name = txt_bookname.getText();
 
-            con = DBConnection.getConnection();
+            Connect();
             pst = con.prepareStatement("select * from book_details where book_name=?");
             pst.setString(1, name);
 

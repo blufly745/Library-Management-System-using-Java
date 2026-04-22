@@ -89,7 +89,7 @@ public class IssueBook extends javax.swing.JFrame {
         int book_id = Integer.parseInt(txt_bookid.getText());
 
         try {
-        	con = DBConnection.getConnection();
+        	Connect();
             pst = con.prepareStatement("select * from book_details where book_id=?");
             pst.setInt(1, book_id);
             rs = pst.executeQuery();
@@ -120,7 +120,7 @@ public class IssueBook extends javax.swing.JFrame {
         int student_id = Integer.parseInt(txt_studentid.getText());
 
         try {
-        	con = DBConnection.getConnection();
+        	Connect();
             pst = con.prepareStatement("select * from student_details where student_id=?");
             pst.setInt(1, student_id);
             rs = pst.executeQuery();

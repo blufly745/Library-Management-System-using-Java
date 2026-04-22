@@ -79,7 +79,7 @@ public class LoginPage extends javax.swing.JFrame {
         String pwd = txt_password.getText();
         String utype = txt_usertype.getSelectedItem().toString();
         try {
-        	con = DBConnection.getConnection();
+        	Connect();
             pst = con.prepareStatement("select * from users where username=? and password=? and usertype=?");
             pst.setString(1, name);
             pst.setString(2, pwd);

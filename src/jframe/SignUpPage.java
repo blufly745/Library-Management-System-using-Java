@@ -155,7 +155,7 @@ public class SignUpPage extends javax.swing.JFrame {
         try {
             String name = txt_username.getText();
 
-            con = DBConnection.getConnection();
+            Connect();
             pst = con.prepareStatement("select * from users where username=?");
             pst.setString(1, name);
             rs = pst.executeQuery();

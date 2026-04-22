@@ -91,7 +91,7 @@ public class ReturnBook extends javax.swing.JFrame {
         int studentId = Integer.parseInt(txt_studentid.getText());
 
         try {
-        	con = DBConnection.getConnection();
+        	Connect();
             pst = con.prepareStatement("select * from issue_book_details where book_id=? and student_id=? and status=?");
             pst.setInt(1, bookId);
             pst.setInt(2, studentId);

@@ -141,7 +141,7 @@ public class ManageStudents extends javax.swing.JFrame {
         try {
             String id = txt_studentid.getText();
 
-            con = DBConnection.getConnection();
+            Connect();
             pst = con.prepareStatement("select * from student_details where student_id=?");
             pst.setString(1, id);
 
